@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{title}} - What are those!?!</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id = "grid-container">
+            <header>
+                <div>
+                    <h1>What are those!?! Shoe Emporium</h1>
+                    <a href="/">View Orders</a>
+                </div>
+            </header>
+            <main>
+                <div>
+                    {% for order in orders %}
+                        <p>
+                            {{ order.name }}: {{ order.order_date }}
+                        </p>
+                        <a href="{{ url_for('single_order', id=order.id) }}">View order</a>
+                    {% endfor %}
+                <!-- <img src="{{ url_for('static', filename='stock_warehouse_image.jpeg') }}" alt="stock room image"> -->
+                </div>
+            </main>
+            <footer>
+                <div>
+                    <h3>&copy; Blue Ghoul Ltd</h3>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
